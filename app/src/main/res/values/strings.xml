@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">SnapStudies</string>
+    <string name="welcome_message">Välkommen!</string>
+    <string name="initial_description">Här kan du öva in dina glosor\nenkelt och effektivt🤩</string>
+    <string name="button_add_words">Lägg till glosor</string>
+    <string name="button_start_practice">Öva på glosor</string>
+    <string name="button_statistics">Statistik</string>
+    <string name="button_next_word">Lägg till ord</string>
+    <string name="button_done_adding_words">KLAR och redo för övning!</string>
+    <string name="textview_word_no">Ord %1$d</string>
 </resources>
