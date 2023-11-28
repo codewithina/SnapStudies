@@ -24,38 +24,56 @@ class PracticeActivity : AppCompatActivity() {
             "Pineapple" to "Ananas"
         )
 
-        val buttonOne : Button = findViewById(R.id.buttonOne)
-        val buttonTwo : Button = findViewById(R.id.buttonTwo)
-        val buttonThree : Button = findViewById(R.id.buttonThree)
-        val buttonFour : Button = findViewById(R.id.buttonFour)
-        val buttonFive : Button = findViewById(R.id.buttonFive)
-        val buttonSix : Button = findViewById(R.id.buttonSix)
+        val buttonOne: Button = findViewById(R.id.buttonOne)
+        val buttonTwo: Button = findViewById(R.id.buttonTwo)
+        val buttonThree: Button = findViewById(R.id.buttonThree)
+        val buttonFour: Button = findViewById(R.id.buttonFour)
+        val buttonFive: Button = findViewById(R.id.buttonFive)
+        val buttonSix: Button = findViewById(R.id.buttonSix)
 
-        val randomKey = temporaryGlossary.keys.random()
         val textViewWordOnCard = findViewById<TextView>(R.id.textViewWordOnCard)
+
+        //Show random word from glossary on card
+        val randomKey = temporaryGlossary.keys.random()
         textViewWordOnCard.text = randomKey
 
-        val listOfButtons = listOf<Button>(buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix)
+        //Set the meaning of word on card as text on random button
+        val listOfButtons =
+            mutableListOf(buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix)
         val randomRightAnswerButton = listOfButtons.random()
-
         randomRightAnswerButton.text = temporaryGlossary[randomKey]
-        val wrongAnswersList = temporaryGlossary.values.toMutableList()
-        wrongAnswersList.remove(temporaryGlossary[randomKey])
+
+        //Remove right answer from glossary list
+        val wrongAnswerGlossaryList = temporaryGlossary.values.toMutableList()
+        wrongAnswerGlossaryList.remove(temporaryGlossary[randomKey])
+
+        //Shuffle the list
+        val shuffledWrongAnswerGlossaryList = wrongAnswerGlossaryList.shuffled()
+
+        //Remove right answer button from button list
+        listOfButtons.remove(randomRightAnswerButton)
+
+        //For every piece in wrongAnswerButtonList set the text
+        for (i in listOfButtons.indices){
+            listOfButtons[i].text = shuffledWrongAnswerGlossaryList[i]
+        }
+
+
 
 
         buttonOne.setOnClickListener {
             //if buttonOne.text == textViewWordOnCard.text right fragment
             //else
         }
-        buttonTwo.setOnClickListener {  }
-        buttonThree.setOnClickListener {  }
-        buttonFour.setOnClickListener {  }
-        buttonFive.setOnClickListener {  }
-        buttonSix.setOnClickListener {  }
+        buttonTwo.setOnClickListener { }
+        buttonThree.setOnClickListener { }
+        buttonFour.setOnClickListener { }
+        buttonFive.setOnClickListener { }
+        buttonSix.setOnClickListener { }
 
+    }
 
-
-
-
+    fun assignRandomAnswersToButtons(){
+        //TODO
     }
 }
