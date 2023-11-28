@@ -2,6 +2,7 @@ package com.example.snapstudies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 
@@ -54,26 +55,27 @@ class PracticeActivity : AppCompatActivity() {
         listOfButtons.remove(randomRightAnswerButton)
 
         //For every piece in wrongAnswerButtonList set the text
-        for (i in listOfButtons.indices){
+        for (i in listOfButtons.indices) {
             listOfButtons[i].text = shuffledWrongAnswerGlossaryList[i]
+
         }
 
-
-
-
-        buttonOne.setOnClickListener {
-            //if buttonOne.text == textViewWordOnCard.text right fragment
-            //else
+        //Tell the buttons what to do when clicking right or wrong answer
+        randomRightAnswerButton.setOnClickListener {
+            //TODO: Open fragment here!!
+            //Log.d("!!!", "Right answer!");
         }
-        buttonTwo.setOnClickListener { }
-        buttonThree.setOnClickListener { }
-        buttonFour.setOnClickListener { }
-        buttonFive.setOnClickListener { }
-        buttonSix.setOnClickListener { }
+
+        for (i in listOfButtons.indices) {
+            listOfButtons[i].setOnClickListener {
+                //TODO: Open fragment here!!
+                //Log.d("!!!", "Wrong answer!");
+            }
+        }
 
     }
 
-    fun assignRandomAnswersToButtons(){
+    fun assignRandomAnswersToButtons() {
         //TODO
     }
 }
