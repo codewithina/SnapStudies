@@ -65,13 +65,16 @@ class PracticeActivity : AppCompatActivity() {
             //TODO: Open fragment here!!
             //Log.d("!!!", "Right answer!");
             val transaction = supportFragmentManager.beginTransaction()
+            val wrongAnswerFragment = WrongAnswerFragment()
+            transaction.add(R.id.rightOrWrongFragmentContainer, wrongAnswerFragment)
+            transaction.commit()
         }
 
         for (i in listOfButtons.indices) {
             listOfButtons[i].setOnClickListener {
                 //TODO: Open fragment here!!
                 //Log.d("!!!", "Wrong answer!");
-                val transaction = supportFragmentManager.beginTransaction()
+                //val transaction = supportFragmentManager.beginTransaction()
             }
         }
 
