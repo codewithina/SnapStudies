@@ -79,6 +79,15 @@ class PracticeActivity : AppCompatActivity() {
     }
 
     fun newCard() {
+
+        if (newPracticeDeck.isEmpty()) {
+            val newFragment = EndFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.rightOrWrongFragmentContainer, newFragment)
+                .commit()
+            return
+        }
+
         randomRightAnswerButton = listOfButtons.random()
 
         //Show random word from glossary on card
@@ -106,19 +115,6 @@ class PracticeActivity : AppCompatActivity() {
 
         listOfButtons.add(randomRightAnswerButton)
         cardCounter++
-
-        // Show fragment when all cards been showed
-        if (cardCounter == maxCards) {
-            Log.d("!!!", "Show end")
-            showEndFragment()
-        }
-    }
-
-    private fun showEndFragment() {
-        val transaction = supportFragmentManager.beginTransaction()
-        val endFragment = EndFragment()
-        transaction.replace(R.id.rightOrWrongFragmentContainer, endFragment)
-        transaction.commit()
     }
 
     fun assignRandomAnswersToButtons() {

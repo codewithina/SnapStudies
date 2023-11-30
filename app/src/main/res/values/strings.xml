@@ -8,6 +8,8 @@
     <string name="button_next_word">Lägg till ord</string>
     <string name="button_done_adding_words">KLAR och redo för övning!</string>
     <string name="textview_word_no">Ord %1$d</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="wrong_answer1">OOUPS...</string>
+    <string name="wrong_answer2">Tyvärr svarade du fel, testa igen! 🙈</string>
+    <string name="wrong_answer3">Tryck för att fortsätta.</string>
+    <string name="right_answer">YEEEY!!! Du svarade helt rätt, bra jobbat.🌟</string>
 </resources>

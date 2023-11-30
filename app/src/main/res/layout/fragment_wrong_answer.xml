@@ -8,22 +8,46 @@
     tools:context=".WrongAnswerFragment">
 
     <View
-        android:id="@+id/wrongFragment"
+        android:id="@+id/endFragment"
         android:layout_width="292dp"
         android:layout_height="258dp"
-        android:background="#92E91E3C"
+        android:background="#C1E91E3C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/wrongAnswer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FEL!"
-        app:layout_constraintBottom_toBottomOf="@+id/wrongFragment"
-        app:layout_constraintEnd_toEndOf="@+id/wrongFragment"
-        app:layout_constraintStart_toStartOf="@+id/wrongFragment"
-        app:layout_constraintTop_toTopOf="@+id/wrongFragment" />
+        android:layout_marginTop="32dp"
+        android:text="@string/wrong_answer1"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="@+id/endFragment"
+        app:layout_constraintStart_toStartOf="@+id/endFragment"
+        app:layout_constraintTop_toTopOf="@+id/endFragment" />
+
+    <TextView
+        android:id="@+id/wrongAnswer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/wrong_answer2"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/endFragment"
+        app:layout_constraintStart_toStartOf="@+id/endFragment"
+        app:layout_constraintTop_toBottomOf="@+id/wrongAnswer1" />
+
+    <TextView
+        android:id="@+id/wrongAnswer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="@string/wrong_answer3"
+        app:layout_constraintEnd_toEndOf="@+id/endFragment"
+        app:layout_constraintStart_toStartOf="@+id/endFragment"
+        app:layout_constraintTop_toBottomOf="@+id/wrongAnswer2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
