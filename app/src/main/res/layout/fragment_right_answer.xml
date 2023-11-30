@@ -8,6 +8,12 @@
     tools:context=".RightAnswerFragment">
 
     <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#83F1F1F1" />
+
+    <View
         android:id="@+id/rightFragment"
         android:layout_width="292dp"
         android:layout_height="258dp"
