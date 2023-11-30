@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 
 // TODO: Rename parameter arguments, choose names that match
@@ -40,6 +41,11 @@ class WrongAnswerFragment : Fragment() {
             activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (requireActivity() as PracticeActivity).nextCard()
     }
 
     companion object {

@@ -42,6 +42,11 @@ class RightAnswerFragment : Fragment() {
         return view
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (requireActivity() as PracticeActivity).nextCard()
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

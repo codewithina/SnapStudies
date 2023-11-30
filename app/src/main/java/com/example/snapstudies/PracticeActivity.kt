@@ -7,23 +7,24 @@ import android.widget.Button
 import android.widget.TextView
 
 class PracticeActivity : AppCompatActivity() {
+
+    //TODO: Switch to SharedPreferences later!!
+    private val temporaryGlossary = hashMapOf(
+        "Apple" to "Äpple",
+        "Banana" to "Banan",
+        "Cherry" to "Körsbär",
+        "Pear" to "Päron",
+        "Elderberry" to "Fläderbär",
+        "Fig" to "Fikon",
+        "Grape" to "Druva",
+        "Honeydew" to "Honungsmelon",
+        "Orange" to "Apelsin",
+        "Pineapple" to "Ananas"
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practice)
-
-        //TODO: Switch to SharedPreferences later!!
-        val temporaryGlossary = hashMapOf(
-            "Apple" to "Äpple",
-            "Banana" to "Banan",
-            "Cherry" to "Körsbär",
-            "Pear" to "Päron",
-            "Elderberry" to "Fläderbär",
-            "Fig" to "Fikon",
-            "Grape" to "Druva",
-            "Honeydew" to "Honungsmelon",
-            "Orange" to "Apelsin",
-            "Pineapple" to "Ananas"
-        )
 
         val buttonOne: Button = findViewById(R.id.buttonOne)
         val buttonTwo: Button = findViewById(R.id.buttonTwo)
@@ -33,6 +34,8 @@ class PracticeActivity : AppCompatActivity() {
         val buttonSix: Button = findViewById(R.id.buttonSix)
 
         val textViewWordOnCard = findViewById<TextView>(R.id.textViewWordOnCard)
+
+        nextCard()
 
         //Show random word from glossary on card
         val randomKey = temporaryGlossary.keys.random()
@@ -54,10 +57,9 @@ class PracticeActivity : AppCompatActivity() {
         //Remove right answer button from button list
         listOfButtons.remove(randomRightAnswerButton)
 
-        //For every piece in wrongAnswerButtonList set the text
+        //For every piece in wrongAnswerButtonList shuffle & set the text
         for (i in listOfButtons.indices) {
             listOfButtons[i].text = shuffledWrongAnswerGlossaryList[i]
-
         }
 
         //Tell the buttons what to do when clicking right or wrong answer
@@ -77,6 +79,22 @@ class PracticeActivity : AppCompatActivity() {
                 transaction.commit()
             }
         }
+
+    }
+
+    fun nextCard(){
+
+        Log.d("!!!", "Metoden nextCard körs.")
+
+        /*TODO:
+        Välja ett slumpmässigt ord från din ordlista.
+        Visa det ordet på kortet.
+        Välja slumpmässigt vilken knapp som ska ha rätt svar.
+        Visa rätt svar på den knappen.
+        Ta bort rätt svar från listan med felaktiga svar.
+        Blanda listan med felaktiga svar.
+        Visa felaktiga svar på de andra knapparna.
+        Sätta upp klickhändelser för knapparna.*/
 
     }
 
