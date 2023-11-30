@@ -22,29 +22,71 @@ class PracticeActivity : AppCompatActivity() {
         "Pineapple" to "Ananas"
     )
 
+
+    private lateinit var buttonOne: Button
+    private lateinit var buttonTwo: Button
+    private lateinit var buttonThree: Button
+    private lateinit var buttonFour: Button
+    private lateinit var buttonFive: Button
+    private lateinit var buttonSix: Button
+
+    private lateinit var listOfButtons: MutableList<Button>
+
+    private lateinit var randomRightAnswerButton: Button
+    private lateinit var textViewWordOnCard: TextView
+
+    private var cardCounter = 0
+    private val maxCards = temporaryGlossary.size
+
+    //Copy of list to go through every word when practicing
+    private lateinit var newPracticeDeck: MutableList<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practice)
 
-        val buttonOne: Button = findViewById(R.id.buttonOne)
-        val buttonTwo: Button = findViewById(R.id.buttonTwo)
-        val buttonThree: Button = findViewById(R.id.buttonThree)
-        val buttonFour: Button = findViewById(R.id.buttonFour)
-        val buttonFive: Button = findViewById(R.id.buttonFive)
-        val buttonSix: Button = findViewById(R.id.buttonSix)
+        textViewWordOnCard = findViewById(R.id.textViewWordOnCard)
 
-        val textViewWordOnCard = findViewById<TextView>(R.id.textViewWordOnCard)
+        buttonOne = findViewById(R.id.buttonOne)
+        buttonTwo = findViewById(R.id.buttonTwo)
+        buttonThree = findViewById(R.id.buttonThree)
+        buttonFour = findViewById(R.id.buttonFour)
+        buttonFive = findViewById(R.id.buttonFive)
+        buttonSix = findViewById(R.id.buttonSix)
+        listOfButtons =
+            mutableListOf(buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix)
 
-        nextCard()
+        newPracticeDeck = temporaryGlossary.keys.toMutableList()
+
+        newCard()
+
+        //Tell the buttons what to do when clicking right or wrong answer
+        for (button in listOfButtons) {
+            button.setOnClickListener {
+                if (it == randomRightAnswerButton) {
+                    val transaction = supportFragmentManager.beginTransaction()
+                    val rightAnswerFragment = RightAnswerFragment()
+                    transaction.add(R.id.rightOrWrongFragmentContainer, rightAnswerFragment)
+                    transaction.commit()
+                } else {
+                    val transaction = supportFragmentManager.beginTransaction()
+                    val wrongAnswerFragment = WrongAnswerFragment()
+                    transaction.add(R.id.rightOrWrongFragmentContainer, wrongAnswerFragment)
+                    transaction.commit()
+                }
+            }
+        }
+    }
+
+    fun newCard() {
+        randomRightAnswerButton = listOfButtons.random()
 
         //Show random word from glossary on card
-        val randomKey = temporaryGlossary.keys.random()
+        val randomKey = newPracticeDeck.random()
+        newPracticeDeck.remove(randomKey)
         textViewWordOnCard.text = randomKey
 
         //Set the meaning of word on card as text on random button
-        val listOfButtons =
-            mutableListOf(buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix)
-        val randomRightAnswerButton = listOfButtons.random()
         randomRightAnswerButton.text = temporaryGlossary[randomKey]
 
         //Remove right answer from glossary list
@@ -52,50 +94,31 @@ class PracticeActivity : AppCompatActivity() {
         wrongAnswerGlossaryList.remove(temporaryGlossary[randomKey])
 
         //Shuffle the list
-        val shuffledWrongAnswerGlossaryList = wrongAnswerGlossaryList.shuffled()
+        wrongAnswerGlossaryList.shuffle()
 
         //Remove right answer button from button list
         listOfButtons.remove(randomRightAnswerButton)
 
         //For every piece in wrongAnswerButtonList shuffle & set the text
         for (i in listOfButtons.indices) {
-            listOfButtons[i].text = shuffledWrongAnswerGlossaryList[i]
+            listOfButtons[i].text = wrongAnswerGlossaryList[i]
         }
 
-        //Tell the buttons what to do when clicking right or wrong answer
-        randomRightAnswerButton.setOnClickListener {
-            val transaction = supportFragmentManager.beginTransaction()
-            val rightAnswerFragment = RightAnswerFragment()
-            transaction.add(R.id.rightOrWrongFragmentContainer, rightAnswerFragment)
-            transaction.commit()
+        listOfButtons.add(randomRightAnswerButton)
+        cardCounter++
 
+        // Show fragment when all cards been showed
+        if (cardCounter == maxCards) {
+            Log.d("!!!", "Show end")
+            showEndFragment()
         }
-
-        for (i in listOfButtons.indices) {
-            listOfButtons[i].setOnClickListener {
-                val transaction = supportFragmentManager.beginTransaction()
-                val wrongAnswerFragment = WrongAnswerFragment()
-                transaction.add(R.id.rightOrWrongFragmentContainer, wrongAnswerFragment)
-                transaction.commit()
-            }
-        }
-
     }
 
-    fun nextCard(){
-
-        Log.d("!!!", "Metoden nextCard körs.")
-
-        /*TODO:
-        Välja ett slumpmässigt ord från din ordlista.
-        Visa det ordet på kortet.
-        Välja slumpmässigt vilken knapp som ska ha rätt svar.
-        Visa rätt svar på den knappen.
-        Ta bort rätt svar från listan med felaktiga svar.
-        Blanda listan med felaktiga svar.
-        Visa felaktiga svar på de andra knapparna.
-        Sätta upp klickhändelser för knapparna.*/
-
+    private fun showEndFragment() {
+        val transaction = supportFragmentManager.beginTransaction()
+        val endFragment = EndFragment()
+        transaction.replace(R.id.rightOrWrongFragmentContainer, endFragment)
+        transaction.commit()
     }
 
     fun assignRandomAnswersToButtons() {

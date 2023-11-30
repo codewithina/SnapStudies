@@ -16,4 +16,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FEL!"
+        app:layout_constraintBottom_toBottomOf="@+id/wrongFragment"
+        app:layout_constraintEnd_toEndOf="@+id/wrongFragment"
+        app:layout_constraintStart_toStartOf="@+id/wrongFragment"
+        app:layout_constraintTop_toTopOf="@+id/wrongFragment" />
 </androidx.constraintlayout.widget.ConstraintLayout>
