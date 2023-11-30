@@ -10,6 +10,7 @@
     <string name="textview_word_no">Ord %1$d</string>
     <string name="wrong_answer1">OOUPS...</string>
     <string name="wrong_answer2">Tyvärr svarade du fel, testa igen! 🙈</string>
-    <string name="wrong_answer3">Tryck för att fortsätta.</string>
-    <string name="right_answer">YEEEY!!! Du svarade helt rätt, bra jobbat.🌟</string>
+    <string name="continue_right_wrong">Tryck för att fortsätta.</string>
+    <string name="right_answer1">YEEEY!!!</string>
+    <string name="right_answer2">Du svarade helt rätt, bra jobbat.🌟</string>
 </resources>

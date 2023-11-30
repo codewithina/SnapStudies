@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,8 +34,12 @@ class EndFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_end, container, false)
+        val view = inflater.inflate(R.layout.fragment_end, container, false)
+        val relativeLayout = view.findViewById<ConstraintLayout>(R.id.constraint_layout)
+        relativeLayout.setOnClickListener {
+            activity?.finish()
+        }
+        return view
     }
 
     companion object {
