@@ -9,7 +9,7 @@ import android.widget.TextView
 class PracticeActivity : AppCompatActivity() {
 
     //TODO: Switch to SharedPreferences later!!
-    private val temporaryGlossary = hashMapOf(
+    /*private val temporaryGlossary = hashMapOf(
         "Apple" to "Äpple",
         "Banana" to "Banan",
         "Cherry" to "Körsbär",
@@ -20,7 +20,7 @@ class PracticeActivity : AppCompatActivity() {
         "Honeydew" to "Honungsmelon",
         "Orange" to "Apelsin",
         "Pineapple" to "Ananas"
-    )
+    )*/
 
 
     private lateinit var buttonOne: Button
@@ -40,9 +40,14 @@ class PracticeActivity : AppCompatActivity() {
     //Copy of list to go through every word when practicing
     private lateinit var newPracticeDeck: MutableList<String>
 
+    var temporaryGlossary: HashMap<String, String>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practice)
+
+        val sharedPreferencesManager = SharedPreferenceManager(this)
+        temporaryGlossary = sharedPreferencesManager.getData("user_glossary_list", HashMap::class.java)
 
         textViewWordOnCard = findViewById(R.id.textViewWordOnCard)
 
@@ -55,7 +60,7 @@ class PracticeActivity : AppCompatActivity() {
         listOfButtons =
             mutableListOf(buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix)
 
-        newPracticeDeck = temporaryGlossary.keys.toMutableList()
+        newPracticeDeck = temporaryGlossary?.keys?.toMutableList()!!
 
         newCard()
 
@@ -95,11 +100,11 @@ class PracticeActivity : AppCompatActivity() {
         textViewWordOnCard.text = randomKey
 
         //Set the meaning of word on card as text on random button
-        randomRightAnswerButton.text = temporaryGlossary[randomKey]
+        randomRightAnswerButton.text = temporaryGlossary?.get(randomKey)
 
         //Remove right answer from glossary list
-        val wrongAnswerGlossaryList = temporaryGlossary.values.toMutableList()
-        wrongAnswerGlossaryList.remove(temporaryGlossary[randomKey])
+        val wrongAnswerGlossaryList = temporaryGlossary?.values?.toMutableList()!!
+        wrongAnswerGlossaryList.remove(temporaryGlossary?.get(randomKey))
 
         //Shuffle the list
         wrongAnswerGlossaryList.shuffle()

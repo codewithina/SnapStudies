@@ -16,10 +16,10 @@ class SharedPreferenceManager (context: Context) {
         editor.apply()
     }
 
-    fun <T> getData(key: String, clazz: Class<T>): T? {
+    fun getData(key: String, clazz: Class<*>): kotlin.collections.HashMap<String, String>? {
         val json = sharedPreferences.getString(key, null)
         return if (json != null) {
-            gson.fromJson(json, clazz)
+            gson.fromJson(json, clazz) as? kotlin.collections.HashMap<String, String>
         } else {
             null
         }
