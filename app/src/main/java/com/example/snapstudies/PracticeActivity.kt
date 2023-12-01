@@ -14,7 +14,7 @@ class PracticeActivity : AppCompatActivity() {
     private lateinit var buttonFour: Button
     private lateinit var buttonFive: Button
     private lateinit var buttonSix: Button
-    private lateinit var RightAnswerButton: Button
+    private lateinit var rightAnswerButton: Button
     private lateinit var listOfButtons: MutableList<Button>
     private lateinit var textViewWordOnCard: TextView
     private lateinit var newPracticeDeck: MutableList<String>
@@ -45,7 +45,7 @@ class PracticeActivity : AppCompatActivity() {
 
         for (button in listOfButtons) {
             button.setOnClickListener {
-                if (it == RightAnswerButton) {
+                if (it == rightAnswerButton) {
                     correctAnswerCount++
                     val transaction = supportFragmentManager.beginTransaction()
                     val rightAnswerFragment = RightAnswerFragment()
@@ -72,7 +72,7 @@ class PracticeActivity : AppCompatActivity() {
             return
         }
 
-        RightAnswerButton = listOfButtons.random()
+        rightAnswerButton = listOfButtons.random()
 
         //Show random word from glossary on card
         val randomKey = newPracticeDeck.random()
@@ -80,7 +80,7 @@ class PracticeActivity : AppCompatActivity() {
         textViewWordOnCard.text = randomKey
 
         //Set the meaning of word on card as text on random button
-        RightAnswerButton.text = userGlossaryList?.get(randomKey)
+        rightAnswerButton.text = userGlossaryList?.get(randomKey)
 
         //Remove right answer from glossary list
         val wrongAnswerGlossaryList = userGlossaryList?.values?.toMutableList()!!
@@ -88,13 +88,13 @@ class PracticeActivity : AppCompatActivity() {
         wrongAnswerGlossaryList.shuffle()
 
         //Remove right answer button from button list
-        listOfButtons.remove(RightAnswerButton)
+        listOfButtons.remove(rightAnswerButton)
 
         //For every piece in wrongAnswerButtonList shuffle & set the text
         for (i in listOfButtons.indices) {
             listOfButtons[i].text = wrongAnswerGlossaryList[i]
         }
-        listOfButtons.add(RightAnswerButton)
+        listOfButtons.add(rightAnswerButton)
         cardCounter++
     }
 

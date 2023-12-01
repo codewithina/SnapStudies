@@ -11,7 +11,7 @@ import android.widget.Toast
 
 class CreateCardsActivity : AppCompatActivity() {
 
-    lateinit var glossaryList: HashMap<String, String>
+    private lateinit var glossaryList: HashMap<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +56,7 @@ class CreateCardsActivity : AppCompatActivity() {
         }
     }
 
-    fun updateWordNumber(textViewWordNo: TextView, wordCounter: Int){
+    private fun updateWordNumber(textViewWordNo: TextView, wordCounter: Int){
         val wordNumber = getString(R.string.textview_word_no, wordCounter)
         textViewWordNo.text = wordNumber
     }
