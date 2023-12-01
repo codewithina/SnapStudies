@@ -7,7 +7,7 @@
     <string name="button_statistics">Statistik</string>
     <string name="button_next_word">Lägg till ord</string>
     <string name="button_done_adding_words">KLAR och redo för övning!</string>
-    <string name="textview_word_no">Ord %1$d</string>
+    <string name="textview_word_no">Ord %d</string>
     <string name="wrong_answer1">OOUPS...</string>
     <string name="wrong_answer2">Tyvärr svarade du fel, testa igen! 🙈</string>
     <string name="continue_right_wrong">Tryck för att fortsätta.</string>
