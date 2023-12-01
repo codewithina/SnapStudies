@@ -13,4 +13,5 @@
     <string name="continue_right_wrong">Tryck för att fortsätta.</string>
     <string name="right_answer1">YEEEY!!!</string>
     <string name="right_answer2">Du svarade helt rätt, bra jobbat.🌟</string>
+    <string name="end_practice">Övningen är klar och du hade %d rätt!🥳</string>
 </resources>

@@ -24,10 +24,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/endMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Du är klar med övningen!"
+        android:text="@string/end_practice"
         app:layout_constraintBottom_toBottomOf="@+id/endFragment"
         app:layout_constraintEnd_toEndOf="@+id/endFragment"
         app:layout_constraintStart_toStartOf="@+id/endFragment"

@@ -2,6 +2,7 @@ package com.example.snapstudies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 
@@ -45,6 +46,7 @@ class PracticeActivity : AppCompatActivity() {
         for (button in listOfButtons) {
             button.setOnClickListener {
                 if (it == RightAnswerButton) {
+                    correctAnswerCount++
                     val transaction = supportFragmentManager.beginTransaction()
                     val rightAnswerFragment = RightAnswerFragment()
                     transaction.add(R.id.rightOrWrongFragmentContainer, rightAnswerFragment)
@@ -60,6 +62,7 @@ class PracticeActivity : AppCompatActivity() {
     }
 
     fun newCard() {
+        Log.d("!!!", correctAnswerCount.toString())
 
         if (newPracticeDeck.isEmpty()) {
             val newFragment = EndFragment()
