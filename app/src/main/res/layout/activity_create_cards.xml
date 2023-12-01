@@ -26,19 +26,19 @@
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
     <EditText
-        android:id="@+id/editSwedishWord"
+        android:id="@+id/editKeySwedishWord"
         android:layout_width="180dp"
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
         android:ems="10"
         android:hint="Svenska"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editEnglishWord"
+        app:layout_constraintBottom_toTopOf="@+id/editValueEnglishWord"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2" />
 
     <EditText
-        android:id="@+id/editEnglishWord"
+        android:id="@+id/editValueEnglishWord"
         android:layout_width="180dp"
         android:layout_height="50dp"
         android:layout_marginBottom="30dp"
@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="@+id/view2" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonAddWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -60,12 +60,12 @@
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonDone"
         android:layout_width="230dp"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
         android:text="@string/button_done_adding_words"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddWord" />
 </androidx.constraintlayout.widget.ConstraintLayout>
