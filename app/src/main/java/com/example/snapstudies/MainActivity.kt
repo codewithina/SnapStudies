@@ -29,12 +29,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonStartPractice.setOnClickListener {
-
-            val intent = Intent(this, PracticeActivity::class.java)
-            startActivity(intent)
-
+            if (userGlossary?.isNotEmpty() == true) {
+                val intent = Intent(this, PracticeActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Skapa gloslista först.", Toast.LENGTH_SHORT).show()
+            }
         }
-
-
     }
 }
