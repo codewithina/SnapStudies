@@ -36,7 +36,6 @@ class PracticeActivity : AppCompatActivity() {
     private lateinit var textViewWordOnCard: TextView
 
     private var cardCounter = 0
-    private val maxCards = temporaryGlossary.size
 
     //Copy of list to go through every word when practicing
     private lateinit var newPracticeDeck: MutableList<String>

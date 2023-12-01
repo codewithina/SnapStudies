@@ -9,7 +9,7 @@ import android.widget.EditText
 
 class CreateCardsActivity : AppCompatActivity() {
 
-    private lateinit var glossaryList: HashMap<String, String>
+    public lateinit var glossaryList: HashMap<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,5 @@ class CreateCardsActivity : AppCompatActivity() {
             val intent = Intent(this, PracticeActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 }

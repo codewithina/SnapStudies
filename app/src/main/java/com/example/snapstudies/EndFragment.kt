@@ -1,5 +1,6 @@
 package com.example.snapstudies
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -37,6 +38,8 @@ class EndFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_end, container, false)
         val relativeLayout = view.findViewById<ConstraintLayout>(R.id.constraint_layout)
         relativeLayout.setOnClickListener {
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
             activity?.finish()
         }
         return view
