@@ -55,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/button_next_word"
+        android:textColor="#373737"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
@@ -65,6 +66,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
         android:text="@string/button_done_adding_words"
+        android:textColor="#373737"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddWord" />
