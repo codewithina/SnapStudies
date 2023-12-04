@@ -5,21 +5,19 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8BF1F1F1"
     tools:context=".WrongAnswerFragment">
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#83F1F1F1" />
+        android:background="#D2F1F1F1" />
 
     <View
         android:id="@+id/endFragment"
         android:layout_width="292dp"
         android:layout_height="258dp"
-        android:backgroundTint="#E91E3C"
-        android:background="@drawable/rounded_background"
+        android:background="@drawable/gradient_wrong_fragment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"

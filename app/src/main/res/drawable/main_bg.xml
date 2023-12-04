@@ -6,12 +6,4 @@
             <solid android:color="#CCCCCC" />
         </shape>
     </item>
-    <!-- Oval form ovanpå bakgrunden -->
-    <item android:top="10dp" android:right="10dp" android:left="10dp" android:bottom="10dp">
-        <shape>
-            <oval>
-                <solid android:color="#000000" />
-            </oval>
-        </shape>
-    </item>
 </layer-list>

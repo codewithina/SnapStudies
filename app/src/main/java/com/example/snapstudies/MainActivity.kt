@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.view.WindowCompat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun startFadeOut (startBg : View, startLogo : ImageView){
+    private fun startFadeOut (startBg : View, startLogo : ImageView){
 
         val fadeOutBg = ObjectAnimator.ofFloat(startBg, "alpha", 1.0f, 0.0f)
         fadeOutBg.duration = 3000
