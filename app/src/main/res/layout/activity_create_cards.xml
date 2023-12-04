@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
     tools:context=".CreateCardsActivity">
 
     <View
         android:id="@+id/view2"
-        android:layout_width="230dp"
-        android:layout_height="230dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="317dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/rounded_background"
+        android:elevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/textview_word_no"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2"
         app:layout_constraintTop_toTopOf="@+id/view2" />
@@ -53,7 +57,8 @@
         android:id="@+id/buttonAddWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_background"
         android:text="@string/button_next_word"
         android:textColor="#373737"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,10 +69,12 @@
         android:id="@+id/buttonDone"
         android:layout_width="230dp"
         android:layout_height="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/rounded_background"
         android:text="@string/button_done_adding_words"
         android:textColor="#373737"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddWord" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

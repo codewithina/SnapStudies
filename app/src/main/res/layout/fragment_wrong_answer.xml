@@ -18,7 +18,7 @@
         android:id="@+id/endFragment"
         android:layout_width="292dp"
         android:layout_height="258dp"
-        android:backgroundTint="#C1E91E3C"
+        android:backgroundTint="#E91E3C"
         android:background="@drawable/rounded_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

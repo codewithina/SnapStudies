@@ -29,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/end_practice"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="@+id/endFragment"
         app:layout_constraintEnd_toEndOf="@+id/endFragment"
         app:layout_constraintStart_toStartOf="@+id/endFragment"

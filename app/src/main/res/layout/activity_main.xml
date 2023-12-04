@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F1F1"
+    android:background="@drawable/main_bg"
     tools:context=".MainActivity">
 
     <TextView
@@ -34,9 +34,9 @@
         android:layout_width="230dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
+        android:background="@drawable/rounded_background"
         android:text="@string/button_add_words"
         android:textColor="#323232"
-        android:background="@drawable/rounded_background"
         app:iconTint="#323232"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,9 +47,9 @@
         android:layout_width="230dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_background"
         android:text="@string/button_statistics"
         android:textColor="#323232"
-        android:background="@drawable/rounded_background"
         app:iconTint="#323232"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,12 +60,32 @@
         android:layout_width="230dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_background"
         android:text="@string/button_start_practice"
         android:textColor="#323232"
-        android:background="@drawable/rounded_background"
         app:iconTint="#323232"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddWords" />
+
+    <View
+        android:id="@+id/startFadeOut"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CCCCCC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logoFadeOut"
+        android:layout_width="344dp"
+        android:layout_height="446dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/snapstudieslogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
