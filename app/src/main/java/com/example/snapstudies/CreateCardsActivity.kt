@@ -38,6 +38,7 @@ class CreateCardsActivity : AppCompatActivity() {
                 englishValue.setText("")
                 wordCounter ++
                 updateWordNumber(textViewWordNo, wordCounter)
+                Toast.makeText(this, "Ordet är registrerat.", Toast.LENGTH_SHORT).show()
                 Log.d("!!!", glossaryList.toString())
             } else {
                 Toast.makeText(this, "Fyll i orden korrekt.", Toast.LENGTH_SHORT).show()
@@ -46,7 +47,8 @@ class CreateCardsActivity : AppCompatActivity() {
 
         buttonDone.setOnClickListener {
             if (glossaryList.size > 7) {
-                sharedPreferencesManager.saveData("user_glossary_list", glossaryList)
+                val userData = UserData(glossaryList)
+                sharedPreferencesManager.saveData("user_glossary_list", userData)
                 Log.d("!!!", glossaryList.toString())
                 val intent = Intent(this, PracticeActivity::class.java)
                 startActivity(intent)

@@ -18,17 +18,24 @@ class PracticeActivity : AppCompatActivity() {
     private lateinit var listOfButtons: MutableList<Button>
     private lateinit var textViewWordOnCard: TextView
     private lateinit var newPracticeDeck: MutableList<String>
+    private lateinit var userData: UserData
 
     private var cardCounter = 0
     private var correctAnswerCount = 0
+    private var totalPracticeRounds = 0
     private var userGlossaryList: HashMap<String, String>? = null
+    private lateinit var getGlossaryList: UserData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practice)
 
         val sharedPreferencesManager = SharedPreferenceManager(this)
-        userGlossaryList = sharedPreferencesManager.getData("user_glossary_list", HashMap::class.java)
+        userData = UserData(hashMapOf(),0, 0, )
+        getGlossaryList = sharedPreferencesManager.getData("user_glossary_list", UserData::class.java)!!
+        userGlossaryList = getGlossaryList.glossaryList
+
+
 
         textViewWordOnCard = findViewById(R.id.textViewWordOnCard)
         buttonOne = findViewById(R.id.buttonOne)
@@ -69,6 +76,7 @@ class PracticeActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.rightOrWrongFragmentContainer, newFragment)
                 .commit()
+            totalPracticeRounds++
             return
         }
 

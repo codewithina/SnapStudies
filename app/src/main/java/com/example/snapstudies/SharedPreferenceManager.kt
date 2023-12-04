@@ -16,12 +16,21 @@ class SharedPreferenceManager (context: Context) {
         editor.apply()
     }
 
-    fun getData(key: String, clazz: Class<*>): HashMap<String, String>? {
+    fun getData(key: String, clazz: Class<UserData>): UserData? {
+        val json = sharedPreferences.getString(key, null)
+        return if (json != null) {
+            gson.fromJson(json, clazz)
+        } else {
+            null
+        }
+    }
+
+    /*fun getData(key: String, clazz: Class<*>): HashMap<String, String>? {
         val json = sharedPreferences.getString(key, null)
         return if (json != null) {
             gson.fromJson(json, clazz) as? HashMap<String, String>
         } else {
             null
         }
-    }
+    }*/
 }

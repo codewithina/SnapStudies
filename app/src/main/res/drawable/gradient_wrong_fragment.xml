@@ -10,7 +10,6 @@
                 android:angle="145"
                 android:centerColor="#90E91E3C"
                 />
-            <solid android:alpha="0.7"/>
             <corners android:radius="20dp" />
 
 

@@ -24,8 +24,8 @@ class MainActivity : AppCompatActivity() {
         val buttonStatistics: Button = findViewById(R.id.buttonStatistics)
         val buttonStartPractice: Button = findViewById(R.id.buttonStartPractice)
         val sharedPreferencesManager = SharedPreferenceManager(this)
-        val userGlossary: HashMap<String, String>? =
-            sharedPreferencesManager.getData("user_glossary_list", HashMap::class.java)
+        val userGlossary: UserData? =
+            sharedPreferencesManager.getData("user_glossary_list", UserData::class.java)
 
         buttonAddWords.setOnClickListener {
             val intent = Intent(this, CreateCardsActivity::class.java)
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonStartPractice.setOnClickListener {
-            if (userGlossary?.isNotEmpty() == true) {
+            if (userGlossary?.glossaryList?.isNotEmpty() == true) {
                 val intent = Intent(this, PracticeActivity::class.java)
                 startActivity(intent)
             } else {
