@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 
 class PracticeActivity : AppCompatActivity() {
 
@@ -19,6 +20,7 @@ class PracticeActivity : AppCompatActivity() {
     private lateinit var textViewWordOnCard: TextView
     private lateinit var newPracticeDeck: MutableList<String>
     private lateinit var userData: UserData
+    private var practiceLanguage: String? = null
 
     private var cardCounter = 0
     private var correctAnswerCount = 0
@@ -42,11 +44,13 @@ class PracticeActivity : AppCompatActivity() {
         buttonFive = findViewById(R.id.buttonFive)
         buttonSix = findViewById(R.id.buttonSix)
 
+        practiceLanguage = intent.getStringExtra("language")
+
         listOfButtons =
             mutableListOf(buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix)
         newPracticeDeck = userGlossaryList?.keys?.toMutableList()!!
 
-        newCard()
+        newNewCard()
 
         for (button in listOfButtons) {
             button.setOnClickListener {
@@ -66,7 +70,7 @@ class PracticeActivity : AppCompatActivity() {
         }
     }
 
-    fun newCard() {
+    fun newNewCard() {
 
         if (newPracticeDeck.isEmpty()) {
             // Save updated values to user_data
@@ -86,27 +90,39 @@ class PracticeActivity : AppCompatActivity() {
 
         rightAnswerButton = listOfButtons.random()
 
-        //Show random word from glossary on card
+        // Show random word from glossary on card
         val randomKey = newPracticeDeck.random()
         newPracticeDeck.remove(randomKey)
-        textViewWordOnCard.text = randomKey
 
-        //Set the meaning of word on card as text on random button
-        rightAnswerButton.text = userGlossaryList?.get(randomKey)
+        val wrongAnswerGlossaryList: MutableList<String>
 
-        //Remove right answer from glossary list
-        val wrongAnswerGlossaryList = userGlossaryList?.values?.toMutableList()!!
-        wrongAnswerGlossaryList.remove(userGlossaryList?.get(randomKey))
+        if (practiceLanguage == "Swedish") {
+            textViewWordOnCard.text = randomKey
+            rightAnswerButton.text = userGlossaryList?.get(randomKey)
+            wrongAnswerGlossaryList = userGlossaryList?.values?.toMutableList()!!
+            wrongAnswerGlossaryList.remove(userGlossaryList?.get(randomKey))
+        } else { // If practiceLanguage is "English"
+            val randomValue = userGlossaryList?.get(randomKey)
+            textViewWordOnCard.text = randomValue
+            rightAnswerButton.text = randomKey
+            wrongAnswerGlossaryList = userGlossaryList?.keys?.toMutableList()!!
+            wrongAnswerGlossaryList.remove(randomKey)
+        }
+
         wrongAnswerGlossaryList.shuffle()
 
-        //Remove right answer button from button list
         listOfButtons.remove(rightAnswerButton)
 
-        //For every piece in wrongAnswerButtonList shuffle & set the text
+        createWrongButtons(wrongAnswerGlossaryList)
+
+        listOfButtons.add(rightAnswerButton)
+        cardCounter++
+    }
+
+    fun createWrongButtons(wrongAnswerGlossaryList: MutableList<String>){
+        // For every piece in wrongAnswerButtonList shuffle & set the text
         for (i in listOfButtons.indices) {
             listOfButtons[i].text = wrongAnswerGlossaryList[i]
         }
-        listOfButtons.add(rightAnswerButton)
-        cardCounter++
     }
 }

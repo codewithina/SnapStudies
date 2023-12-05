@@ -27,6 +27,6 @@ class RightAnswerFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        (requireActivity() as PracticeActivity).newCard()
+        (requireActivity() as PracticeActivity).newNewCard()
     }
 }
