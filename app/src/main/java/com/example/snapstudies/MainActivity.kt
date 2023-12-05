@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog
 class MainActivity : AppCompatActivity() {
 
     private lateinit var practiceLanguage: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -46,38 +47,37 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    fun chooseLanguage() {
-        // Create an AlertDialog.Builder instance
+
+    private fun chooseLanguage() {
         val builder = AlertDialog.Builder(this)
 
-        // Set the message and the title of the dialog
+        // Set the message and title for the dialog
         builder.setTitle("Välj språk")
         builder.setMessage("Vilket språk vill du öva på?")
 
-        // Add two buttons to the dialog: one for Swedish and one for English
+        // Add one button for Swedish and one for English
         builder.setPositiveButton("Svenska") { _, _ ->
             practiceLanguage = "Swedish"
-            Toast.makeText(this, "Valt språk: $practiceLanguage", Toast.LENGTH_SHORT).show()
-            startPractice()  // Start the exercise after the user has made a choice
+            startPractice()
         }
         builder.setNegativeButton("Engelska") { _, _ ->
             practiceLanguage = "English"
-            startPractice()  // Start the exercise after the user has made a choice
+            startPractice()
         }
 
-        // Create and show the dialog
         val dialog = builder.create()
         dialog.show()
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK)
-        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
 
+        // Layout
         val drawable = GradientDrawable()
         drawable.cornerRadius = 20f
         drawable.setColor(Color.WHITE)
         dialog.window?.setBackgroundDrawable(drawable)
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK)
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
     }
 
-    fun startPractice() {
+    private fun startPractice() {
         val intent = Intent(this, PracticeActivity::class.java)
         intent.putExtra("language", practiceLanguage)
         startActivity(intent)
