@@ -1,8 +1,7 @@
 package com.example.snapstudies
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 
@@ -31,7 +30,7 @@ class PracticeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_practice)
 
         sharedPreferencesManager = SharedPreferenceManager(this)
-        userData = UserData(hashMapOf(), 0, 0 )
+        userData = UserData(hashMapOf(), 0, 0)
         userData = sharedPreferencesManager.getData("user_data", UserData::class.java)!!
         userGlossaryList = userData.glossaryList
 
@@ -43,7 +42,8 @@ class PracticeActivity : AppCompatActivity() {
         buttonFive = findViewById(R.id.buttonFive)
         buttonSix = findViewById(R.id.buttonSix)
 
-        listOfButtons = mutableListOf(buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix)
+        listOfButtons =
+            mutableListOf(buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix)
         newPracticeDeck = userGlossaryList?.keys?.toMutableList()!!
 
         newCard()
@@ -70,7 +70,8 @@ class PracticeActivity : AppCompatActivity() {
 
         if (newPracticeDeck.isEmpty()) {
             // Save updated values to user_data
-            val savedUserData = sharedPreferencesManager.getData("user_data", UserData::class.java)!!
+            val savedUserData =
+                sharedPreferencesManager.getData("user_data", UserData::class.java)!!
             userData.totalRounds = savedUserData.totalRounds + 1
             userData.correctAnswers = correctAnswerCount
             sharedPreferencesManager.saveData("user_data", userData)
@@ -91,7 +92,7 @@ class PracticeActivity : AppCompatActivity() {
         textViewWordOnCard.text = randomKey
 
         //Set the meaning of word on card as text on random button
-            rightAnswerButton.text = userGlossaryList?.get(randomKey)
+        rightAnswerButton.text = userGlossaryList?.get(randomKey)
 
         //Remove right answer from glossary list
         val wrongAnswerGlossaryList = userGlossaryList?.values?.toMutableList()!!

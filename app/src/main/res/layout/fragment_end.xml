@@ -11,14 +11,13 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#83F1F1F1" />
+        android:background="#D2F1F1F1" />
 
     <View
         android:id="@+id/endFragment"
         android:layout_width="292dp"
         android:layout_height="258dp"
-        android:backgroundTint="#8100BCD4"
-        android:background="@drawable/rounded_background"
+        android:background="@drawable/gradient_end_fragment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -18,7 +18,8 @@ class StaticsActivity : AppCompatActivity() {
             val totalRounds = savedUserData.totalRounds
             val sizeGlossaryList = savedUserData.glossaryList.size
             val correctAnswers = savedUserData.correctAnswers
-            val mainText = getString(R.string.statistics_text, totalRounds, correctAnswers, sizeGlossaryList)
+            val mainText =
+                getString(R.string.statistics_text, totalRounds, correctAnswers, sizeGlossaryList)
             textViewTotalRounds.text = mainText
         }
     }

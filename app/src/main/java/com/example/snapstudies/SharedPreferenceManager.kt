@@ -6,7 +6,8 @@ import com.google.gson.Gson
 
 class SharedPreferenceManager(context: Context) {
 
-    private val sharedPreferences: SharedPreferences = context.getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
     private val gson = Gson()
 
     fun <T> saveData(key: String, data: T) {

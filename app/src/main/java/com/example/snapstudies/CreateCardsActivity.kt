@@ -36,7 +36,7 @@ class CreateCardsActivity : AppCompatActivity() {
                 swedishKey.setText("")
                 swedishKey.requestFocus()
                 englishValue.setText("")
-                wordCounter ++
+                wordCounter++
                 updateWordNumber(textViewWordNo, wordCounter)
                 Toast.makeText(this, "Ordet är registrerat.", Toast.LENGTH_SHORT).show()
                 Log.d("!!!", glossaryList.toString())
@@ -47,7 +47,7 @@ class CreateCardsActivity : AppCompatActivity() {
 
         buttonDone.setOnClickListener {
             if (glossaryList.size > 7) {
-                val userData = UserData(glossaryList,0)
+                val userData = UserData(glossaryList, 0)
                 sharedPreferencesManager.saveData("user_data", userData)
                 //Log.d("!!!", glossaryList.toString())
                 val intent = Intent(this, PracticeActivity::class.java)
@@ -58,7 +58,7 @@ class CreateCardsActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateWordNumber(textViewWordNo: TextView, wordCounter: Int){
+    private fun updateWordNumber(textViewWordNo: TextView, wordCounter: Int) {
         val wordNumber = getString(R.string.textview_word_no, wordCounter)
         textViewWordNo.text = wordNumber
     }
