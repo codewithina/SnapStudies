@@ -67,13 +67,15 @@ class PracticeActivity : AppCompatActivity() {
     }
 
     fun newCard() {
-        Log.d("!!!", correctAnswerCount.toString())
 
         if (newPracticeDeck.isEmpty()) {
+            // Save updated values to user_data
             val savedUserData = sharedPreferencesManager.getData("user_data", UserData::class.java)!!
             userData.totalRounds = savedUserData.totalRounds + 1
+            userData.correctAnswers = correctAnswerCount
             sharedPreferencesManager.saveData("user_data", userData)
 
+            // Open end fragment and return to main
             val newFragment = EndFragment.newInstance(correctAnswerCount)
             supportFragmentManager.beginTransaction()
                 .replace(R.id.rightOrWrongFragmentContainer, newFragment)
