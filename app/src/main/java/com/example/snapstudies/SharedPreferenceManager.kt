@@ -4,19 +4,19 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 
-class SharedPreferenceManager (context: Context) {
+class SharedPreferenceManager(context: Context) {
 
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
     private val gson = Gson()
 
-    fun saveData(key: String, data: Any) {
+    fun <T> saveData(key: String, data: T) {
         val editor = sharedPreferences.edit()
         val json = gson.toJson(data)
         editor.putString(key, json)
         editor.apply()
     }
 
-    fun getData(key: String, clazz: Class<UserData>): UserData? {
+    fun <T> getData(key: String, clazz: Class<T>): T? {
         val json = sharedPreferences.getString(key, null)
         return if (json != null) {
             gson.fromJson(json, clazz)
@@ -24,13 +24,4 @@ class SharedPreferenceManager (context: Context) {
             null
         }
     }
-
-    /*fun getData(key: String, clazz: Class<*>): HashMap<String, String>? {
-        val json = sharedPreferences.getString(key, null)
-        return if (json != null) {
-            gson.fromJson(json, clazz) as? HashMap<String, String>
-        } else {
-            null
-        }
-    }*/
 }

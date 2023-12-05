@@ -47,9 +47,9 @@ class CreateCardsActivity : AppCompatActivity() {
 
         buttonDone.setOnClickListener {
             if (glossaryList.size > 7) {
-                val userData = UserData(glossaryList)
-                sharedPreferencesManager.saveData("user_glossary_list", userData)
-                Log.d("!!!", glossaryList.toString())
+                val userData = UserData(glossaryList,0)
+                sharedPreferencesManager.saveData("user_data", userData)
+                //Log.d("!!!", glossaryList.toString())
                 val intent = Intent(this, PracticeActivity::class.java)
                 startActivity(intent)
             } else {

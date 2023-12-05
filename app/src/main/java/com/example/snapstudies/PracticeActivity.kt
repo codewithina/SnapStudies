@@ -1,5 +1,4 @@
 package com.example.snapstudies
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +7,7 @@ import android.widget.TextView
 
 class PracticeActivity : AppCompatActivity() {
 
+    private lateinit var sharedPreferencesManager: SharedPreferenceManager
     private lateinit var buttonOne: Button
     private lateinit var buttonTwo: Button
     private lateinit var buttonThree: Button
@@ -22,20 +22,17 @@ class PracticeActivity : AppCompatActivity() {
 
     private var cardCounter = 0
     private var correctAnswerCount = 0
-    private var totalPracticeRounds = 0
     private var userGlossaryList: HashMap<String, String>? = null
-    private lateinit var getGlossaryList: UserData
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practice)
 
-        val sharedPreferencesManager = SharedPreferenceManager(this)
-        userData = UserData(hashMapOf(),0, 0, )
-        getGlossaryList = sharedPreferencesManager.getData("user_glossary_list", UserData::class.java)!!
-        userGlossaryList = getGlossaryList.glossaryList
-
-
+        sharedPreferencesManager = SharedPreferenceManager(this)
+        userData = UserData(hashMapOf(), 0, 0 )
+        userData = sharedPreferencesManager.getData("user_data", UserData::class.java)!!
+        userGlossaryList = userData.glossaryList
 
         textViewWordOnCard = findViewById(R.id.textViewWordOnCard)
         buttonOne = findViewById(R.id.buttonOne)
@@ -72,11 +69,15 @@ class PracticeActivity : AppCompatActivity() {
         Log.d("!!!", correctAnswerCount.toString())
 
         if (newPracticeDeck.isEmpty()) {
+            val savedUserData = sharedPreferencesManager.getData("user_data", UserData::class.java)!!
+            userData.totalRounds = savedUserData.totalRounds + 1
+            sharedPreferencesManager.saveData("user_data", userData)
+
+            Log.d("!!! rounds", userData.totalRounds.toString())
             val newFragment = EndFragment()
             supportFragmentManager.beginTransaction()
                 .replace(R.id.rightOrWrongFragmentContainer, newFragment)
                 .commit()
-            totalPracticeRounds++
             return
         }
 
@@ -88,7 +89,7 @@ class PracticeActivity : AppCompatActivity() {
         textViewWordOnCard.text = randomKey
 
         //Set the meaning of word on card as text on random button
-        rightAnswerButton.text = userGlossaryList?.get(randomKey)
+            rightAnswerButton.text = userGlossaryList?.get(randomKey)
 
         //Remove right answer from glossary list
         val wrongAnswerGlossaryList = userGlossaryList?.values?.toMutableList()!!
@@ -106,7 +107,13 @@ class PracticeActivity : AppCompatActivity() {
         cardCounter++
     }
 
-    fun assignRandomAnswersToButtons() {
-        //TODO
-    }
+  /*  fun saveCorrectAnswers (){
+          val sharedPreferencesManager = SharedPreferenceManager(this)
+        userData = sharedPreferencesManager.getData("total_practice_rounds", UserData::class.java)!!
+        userData.let {
+            it.totalRounds+=1
+            Log.d("!!!", it.totalRounds.toString())
+            sharedPreferencesManager.saveData("total_practice_rounds", it)
+        }
+    }*/
 }
