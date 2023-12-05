@@ -1,4 +1,5 @@
 package com.example.snapstudies
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -73,8 +74,7 @@ class PracticeActivity : AppCompatActivity() {
             userData.totalRounds = savedUserData.totalRounds + 1
             sharedPreferencesManager.saveData("user_data", userData)
 
-            Log.d("!!! rounds", userData.totalRounds.toString())
-            val newFragment = EndFragment()
+            val newFragment = EndFragment.newInstance(correctAnswerCount)
             supportFragmentManager.beginTransaction()
                 .replace(R.id.rightOrWrongFragmentContainer, newFragment)
                 .commit()

@@ -6,28 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val ARG_CORRECT_ANSWERS = "ARG_CORRECT_ANSWERS"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [EndFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EndFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var correctAnswers: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            correctAnswers = it.getInt(ARG_CORRECT_ANSWERS, 0)
         }
     }
 
@@ -36,6 +27,14 @@ class EndFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_end, container, false)
+
+        val endMsg = view.findViewById<TextView>(R.id.endMsg)
+
+        correctAnswers?.let {
+            val endPracticeText = getString(R.string.end_practice, it)
+            endMsg.text = endPracticeText
+        }
+
         val relativeLayout = view.findViewById<ConstraintLayout>(R.id.constraint_layout)
         relativeLayout.setOnClickListener {
             val intent = Intent(activity, MainActivity::class.java)
@@ -46,21 +45,11 @@ class EndFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EndFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(correctAnswers: Int) =
             EndFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putInt(ARG_CORRECT_ANSWERS, correctAnswers)
                 }
             }
     }

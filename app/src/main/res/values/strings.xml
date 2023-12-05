@@ -13,5 +13,8 @@
     <string name="continue_right_wrong">Tryck för att fortsätta.</string>
     <string name="right_answer1">YEEEY!!!</string>
     <string name="right_answer2">Du svarade helt rätt, bra jobbat.🌟</string>
-    <string name="end_practice">Övningen är klar!🥳</string>
+    <string name="end_practice">Du fick %d rätt!🥳</string>
+    <string name="statistics_text">På senast inlagda glosorna har du övat %d gånger.
+        Senaste omgången lyckades du kamma hem %d av %d rätt!</string>
+    <string name="statistics_continue">Kämpa på!🔥</string>
 </resources>
