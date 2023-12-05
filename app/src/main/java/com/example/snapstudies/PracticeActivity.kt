@@ -106,14 +106,4 @@ class PracticeActivity : AppCompatActivity() {
         listOfButtons.add(rightAnswerButton)
         cardCounter++
     }
-
-  /*  fun saveCorrectAnswers (){
-          val sharedPreferencesManager = SharedPreferenceManager(this)
-        userData = sharedPreferencesManager.getData("total_practice_rounds", UserData::class.java)!!
-        userData.let {
-            it.totalRounds+=1
-            Log.d("!!!", it.totalRounds.toString())
-            sharedPreferencesManager.saveData("total_practice_rounds", it)
-        }
-    }*/
 }
