@@ -79,6 +79,7 @@ class PracticeActivity : AppCompatActivity() {
 
         listOfButtons.add(rightAnswerButton)
         cardCounter++
+        cardsOpenedText(cardCounter)
     }
 
     private fun createNewDeck(){
@@ -135,5 +136,19 @@ class PracticeActivity : AppCompatActivity() {
         userData.totalRounds = savedUserData.totalRounds + 1
         userData.correctAnswers = correctAnswerCount
         sharedPreferencesManager.saveData("user_data", userData)
+    }
+
+    private fun cardsOpenedText(cardCounter : Int){
+        val textViewCardsLeft = findViewById<TextView>(R.id.cardsLeft)
+
+        val sharedPreferencesManager = SharedPreferenceManager(this)
+        val savedUserData = sharedPreferencesManager.getData("user_data", UserData::class.java)
+
+        if (savedUserData != null) {
+            val sizeGlossaryList = savedUserData.glossaryList.size
+            val cardsOpened =
+                getString(R.string.opened_cards, cardCounter, sizeGlossaryList)
+            textViewCardsLeft.text = cardsOpened
+        }
     }
 }

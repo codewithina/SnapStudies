@@ -17,4 +17,5 @@
     <string name="statistics_text">På senast inlagda glosorna har du övat %d gånger.
         Senaste omgången lyckades du kamma hem %d av %d rätt!</string>
     <string name="statistics_continue">Kämpa på!🔥</string>
+    <string name="opened_cards">%d/%d</string>
 </resources>

@@ -27,9 +27,22 @@
         android:id="@+id/endMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bellota_text"
         android:text="@string/end_practice"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/endFragment"
+        app:layout_constraintEnd_toEndOf="@+id/endFragment"
+        app:layout_constraintStart_toStartOf="@+id/endFragment"
+        app:layout_constraintTop_toTopOf="@+id/endFragment" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/bellota"
+        android:text="KLART!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="@+id/endFragment"
         app:layout_constraintStart_toStartOf="@+id/endFragment"
         app:layout_constraintTop_toTopOf="@+id/endFragment" />
