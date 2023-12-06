@@ -107,6 +107,7 @@ class PracticeActivity : AppCompatActivity() {
 
     private fun openResultFragment(clickedButton : Button){
         if (clickedButton == rightAnswerButton) {
+            //clickedButton.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
             correctAnswerCount++
             val transaction = supportFragmentManager.beginTransaction()
             val rightAnswerFragment = RightAnswerFragment()
