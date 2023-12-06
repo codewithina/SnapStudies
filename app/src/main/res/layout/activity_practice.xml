@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/back_button_background"
         android:foreground="@drawable/back_button_foreground"
-        android:elevation="20dp"
+        android:elevation="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

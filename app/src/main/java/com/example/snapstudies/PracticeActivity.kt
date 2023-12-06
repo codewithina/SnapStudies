@@ -1,8 +1,11 @@
 package com.example.snapstudies
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 
@@ -62,6 +65,9 @@ class PracticeActivity : AppCompatActivity() {
             endPractice()
             return
         }
+
+        cardAnim()
+        buttonAnim()
 
         rightAnswerButton = listOfButtons.random()
 
@@ -160,4 +166,42 @@ class PracticeActivity : AppCompatActivity() {
             textViewCardsLeft.text = cardsOpened
         }
     }
+    private fun cardAnim(){
+        val initialScale = 1.2f
+        val targetScale = 1f
+        val initialMove = 200f
+        val targetMove = 0f
+
+        val viewCard = findViewById<View>(R.id.viewCard)
+        val scaleX = ObjectAnimator.ofFloat(viewCard, "scaleX", initialScale, targetScale)
+        val scaleY = ObjectAnimator.ofFloat(viewCard, "scaleY", initialScale, targetScale)
+        val moveY = ObjectAnimator.ofFloat(viewCard, "translationY", initialMove, targetMove)
+
+        val scaleX2 = ObjectAnimator.ofFloat(wordOnCard, "scaleX", initialScale, targetScale)
+        val scaleY2 = ObjectAnimator.ofFloat(wordOnCard, "scaleY", initialScale, targetScale)
+        val moveY2 = ObjectAnimator.ofFloat(wordOnCard, "translationY", initialMove, targetMove)
+
+        val set = AnimatorSet()
+        set.playTogether(scaleX, scaleY, moveY, scaleX2, scaleY2, moveY2)
+        set.duration = 2000
+        set.start()
+    }
+
+    private fun buttonAnim(){
+        val fadeInDuration = 1000L
+        val delay = 1000L
+
+        for (button in listOfButtons) {
+            button.alpha = 0f
+
+            val fadeInAnim = ObjectAnimator.ofFloat(button, "alpha", 0f, 1f)
+            fadeInAnim.duration = fadeInDuration
+
+            val set = AnimatorSet()
+            set.play(fadeInAnim)
+            set.startDelay = delay
+            set.start()
+        }
+    }
+
 }

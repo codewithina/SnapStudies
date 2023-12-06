@@ -15,21 +15,23 @@
 
     <View
         android:id="@+id/endFragment"
-        android:layout_width="292dp"
-        android:layout_height="258dp"
+        android:layout_width="320dp"
+        android:layout_height="200dp"
         android:background="@drawable/gradient_right_fragment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
 
     <TextView
         android:id="@+id/wrongAnswer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bellota"
         android:text="@string/right_answer1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="@+id/endFragment"
         app:layout_constraintStart_toStartOf="@+id/endFragment"
@@ -37,12 +39,13 @@
 
     <TextView
         android:id="@+id/wrongAnswer2"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/bellota_text"
         android:text="@string/right_answer2"
-        android:textSize="16sp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="@+id/endFragment"
         app:layout_constraintStart_toStartOf="@+id/endFragment"
         app:layout_constraintTop_toBottomOf="@+id/wrongAnswer1" />
@@ -51,7 +54,7 @@
         android:id="@+id/wrongAnswer3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/bellota_text"
         android:text="@string/continue_right_wrong"
         app:layout_constraintEnd_toEndOf="@+id/endFragment"

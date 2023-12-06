@@ -3,6 +3,7 @@ package com.example.snapstudies
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +11,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.res.ResourcesCompat
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,7 +45,6 @@ class MainActivity : AppCompatActivity() {
 
         buttonStartPractice.setOnClickListener {
             if (userData?.glossaryList?.isNotEmpty() == true) {
-                val intent = Intent(this, PracticeActivity::class.java)
                 chooseLanguage()
             } else {
                 Toast.makeText(this, "Skapa gloslista först.", Toast.LENGTH_SHORT).show()
@@ -69,6 +71,13 @@ class MainActivity : AppCompatActivity() {
 
         val dialog = builder.create()
         dialog.show()
+
+
+
+        // Font msg
+        val customTypeface = ResourcesCompat.getFont(this, R.font.bellota_text)
+        val textViewMsg = dialog.findViewById<TextView>(android.R.id.message)
+        textViewMsg?.typeface = customTypeface
 
         // Layout
         val drawable = GradientDrawable()
