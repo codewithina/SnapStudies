@@ -59,6 +59,7 @@ class CreateCardsActivity : AppCompatActivity() {
                 sharedPreferencesManager.saveData("user_data", userData)
                 //Log.d("!!!", glossaryList.toString())
                 val intent = Intent(this, PracticeActivity::class.java)
+                intent.putExtra("language", "English")
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Lägg till fler ord.", Toast.LENGTH_SHORT).show()

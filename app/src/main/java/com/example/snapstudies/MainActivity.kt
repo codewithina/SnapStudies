@@ -39,8 +39,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonStatistics.setOnClickListener {
-            val intent = Intent(this, StaticsActivity::class.java)
-            startActivity(intent)
+            if (userData?.glossaryList?.isNotEmpty() == true) {
+                val intent = Intent(this, StaticsActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Ingen statistik att visa.", Toast.LENGTH_SHORT).show()
+            }
         }
 
         buttonStartPractice.setOnClickListener {
@@ -71,13 +75,6 @@ class MainActivity : AppCompatActivity() {
 
         val dialog = builder.create()
         dialog.show()
-
-
-
-        // Font msg
-        val customTypeface = ResourcesCompat.getFont(this, R.font.bellota_text)
-        val textViewMsg = dialog.findViewById<TextView>(android.R.id.message)
-        textViewMsg?.typeface = customTypeface
 
         // Layout
         val drawable = GradientDrawable()
