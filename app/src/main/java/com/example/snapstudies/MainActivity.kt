@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportActionBar?.hide()
+
         val buttonAddWords: Button = findViewById(R.id.buttonAddWords)
         val buttonStatistics: Button = findViewById(R.id.buttonStatistics)
         val buttonStartPractice: Button = findViewById(R.id.buttonStartPractice)

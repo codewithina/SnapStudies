@@ -6,4 +6,17 @@
             <solid android:color="#CCCCCC" />
         </shape>
     </item>
+
+    <item android:top="-300dp" android:left="0dp" android:right="20dp" android:bottom="20dp">
+        <rotate
+            android:fromDegrees="40"
+            android:toDegrees="50"
+            android:pivotX="20%"
+            android:pivotY="30%">
+            <shape android:shape="oval">
+                <solid android:color="#BBBBBB" />
+            </shape>
+        </rotate>
+    </item>
+
 </layer-list>

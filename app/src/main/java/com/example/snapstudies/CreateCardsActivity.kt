@@ -17,6 +17,8 @@ class CreateCardsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_cards)
 
+        supportActionBar?.hide()
+
         val buttonAddWord = findViewById<Button>(R.id.buttonAddWord)
         val buttonDone = findViewById<Button>(R.id.buttonDone)
         val swedishKey = findViewById<EditText>(R.id.editKeySwedishWord)

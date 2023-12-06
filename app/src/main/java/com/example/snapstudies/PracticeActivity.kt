@@ -29,6 +29,8 @@ class PracticeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practice)
 
+        supportActionBar?.hide()
+
         wordOnCard= findViewById(R.id.textViewWordOnCard)
         buttonOne = findViewById(R.id.buttonOne)
         buttonTwo = findViewById(R.id.buttonTwo)
