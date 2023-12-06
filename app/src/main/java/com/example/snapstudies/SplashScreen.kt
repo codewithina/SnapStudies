@@ -18,6 +18,6 @@ class SplashScreen : AppCompatActivity() {
             val options = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in, R.anim.fade_out)
             startActivity(intent, options.toBundle())
             finish()
-        }, 500)
+        }, 2000)
     }
 }

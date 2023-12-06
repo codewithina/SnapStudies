@@ -1,5 +1,6 @@
 package com.example.snapstudies
 
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.StyleSpan
+import android.widget.Button
 import android.widget.TextView
 
 class StaticsActivity : AppCompatActivity() {
@@ -16,6 +18,12 @@ class StaticsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_statics)
 
         supportActionBar?.hide()
+
+        val backButtonStats = findViewById<Button>(R.id.backButtonStats)
+        backButtonStats.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         val textViewStatistics = findViewById<TextView>(R.id.main_stats)
         val textViewStatistics2 = findViewById<TextView>(R.id.main_stats2)

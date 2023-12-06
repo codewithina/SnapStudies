@@ -7,6 +7,18 @@
     android:background="@drawable/main_bg"
     tools:context=".PracticeActivity">
 
+    <Button
+        android:id="@+id/backButtonPractice"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/back_button_background"
+        android:foreground="@drawable/back_button_foreground"
+        android:elevation="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <View
         android:id="@+id/view5"
         android:layout_width="409dp"

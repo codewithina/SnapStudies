@@ -21,6 +21,7 @@ class CreateCardsActivity : AppCompatActivity() {
 
         val buttonAddWord = findViewById<Button>(R.id.buttonAddWord)
         val buttonDone = findViewById<Button>(R.id.buttonDone)
+        val backButtonCards = findViewById<Button>(R.id.backButtonCards)
         val swedishKey = findViewById<EditText>(R.id.editKeySwedishWord)
         val englishValue = findViewById<EditText>(R.id.editValueEnglishWord)
         val textViewWordNo = findViewById<TextView>(R.id.textViewWordNo)
@@ -29,6 +30,11 @@ class CreateCardsActivity : AppCompatActivity() {
 
         glossaryList = HashMap()
         updateWordNumber(textViewWordNo, wordCounter)
+
+        backButtonCards.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         buttonAddWord.setOnClickListener {
             val key = swedishKey.text.toString()

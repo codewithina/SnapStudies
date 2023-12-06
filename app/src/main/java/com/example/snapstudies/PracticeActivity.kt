@@ -1,5 +1,6 @@
 package com.example.snapstudies
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -30,6 +31,12 @@ class PracticeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_practice)
 
         supportActionBar?.hide()
+
+        val backButtonPractice = findViewById<Button>(R.id.backButtonPractice)
+        backButtonPractice.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         wordOnCard= findViewById(R.id.textViewWordOnCard)
         buttonOne = findViewById(R.id.buttonOne)
