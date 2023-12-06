@@ -43,6 +43,7 @@
         android:outlineSpotShadowColor="@android:color/transparent"
         android:textColorHint="#4A4A4A"
         android:translationZ="10dp"
+        android:maxLength="15"
         app:layout_constraintBottom_toTopOf="@+id/editValueEnglishWord"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2" />
@@ -59,6 +60,7 @@
         android:outlineSpotShadowColor="@android:color/transparent"
         android:textColorHint="#4A4A4A"
         android:translationZ="10dp"
+        android:maxLength="15"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2" />
