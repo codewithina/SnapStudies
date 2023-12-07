@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonStatistics.setOnClickListener {
-            if (userData?.glossaryList?.isNotEmpty() == true) {
+            if (userData?.glossaryList?.isNotEmpty() == true && userData.totalRounds > 0) {
                 val intent = Intent(this, StaticsActivity::class.java)
                 startActivity(intent)
             } else {

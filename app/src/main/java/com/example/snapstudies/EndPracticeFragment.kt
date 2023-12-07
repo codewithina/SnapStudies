@@ -11,7 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 
 private const val ARG_CORRECT_ANSWERS = "ARG_CORRECT_ANSWERS"
 
-class EndFragment : Fragment() {
+class EndPracticeFragment : Fragment() {
 
     private var correctAnswers: Int? = null
 
@@ -47,7 +47,7 @@ class EndFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(correctAnswers: Int) =
-            EndFragment().apply {
+            EndPracticeFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_CORRECT_ANSWERS, correctAnswers)
                 }

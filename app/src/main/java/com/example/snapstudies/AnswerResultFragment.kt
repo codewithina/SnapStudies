@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 
-class RightAnswerFragment : Fragment() {
+class AnswerResultFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,9 +17,20 @@ class RightAnswerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_right_answer, container, false)
-        val constraintLayout = view.findViewById<ConstraintLayout>(R.id.constraintLayout)
-        constraintLayout.setOnClickListener {
+        val isRightAnswer = arguments?.getBoolean("isRightAnswer") ?: false
+
+        val view = if (isRightAnswer) {
+            inflater.inflate(R.layout.fragment_right_answer, container, false)
+        } else {
+            inflater.inflate(R.layout.fragment_wrong_answer, container, false)
+        }
+
+        val layout = if (isRightAnswer) {
+            view.findViewById<ConstraintLayout>(R.id.constraintLayout)
+        } else {
+            view.findViewById(R.id.relativeLayout)
+        }
+        layout.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
         return view

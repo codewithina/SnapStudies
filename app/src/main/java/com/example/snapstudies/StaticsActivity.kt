@@ -38,6 +38,8 @@ class StaticsActivity : AppCompatActivity() {
 
             val mainText = getString(R.string.statistics_text, totalRounds)
             val mainText2 = getString(R.string.statistics_text2, correctAnswers, sizeGlossaryList)
+
+            // Numbers layout
             val spannableString = SpannableString.valueOf(Html.fromHtml(mainText, Html.FROM_HTML_MODE_LEGACY))
             val spannableString2 = SpannableString.valueOf(Html.fromHtml(mainText2, Html.FROM_HTML_MODE_LEGACY))
 

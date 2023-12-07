@@ -1,5 +1,7 @@
 package com.example.snapstudies
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
@@ -41,7 +43,7 @@ class PracticeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        wordOnCard= findViewById(R.id.textViewWordOnCard)
+        wordOnCard = findViewById(R.id.textViewWordOnCard)
         buttonOne = findViewById(R.id.buttonOne)
         buttonTwo = findViewById(R.id.buttonTwo)
         buttonThree = findViewById(R.id.buttonThree)
@@ -68,6 +70,9 @@ class PracticeActivity : AppCompatActivity() {
 
         cardAnim()
         buttonAnim()
+
+
+        //TODO: Create function!!!
 
         rightAnswerButton = listOfButtons.random()
 
@@ -97,7 +102,7 @@ class PracticeActivity : AppCompatActivity() {
         cardsOpenedText(cardCounter)
     }
 
-    private fun createNewDeck(){
+    private fun createNewDeck() {
         sharedPreferencesManager = SharedPreferenceManager(this)
         userData = UserData(hashMapOf(), 0, 0)
         userData = sharedPreferencesManager.getData("user_data", UserData::class.java)!!
@@ -105,18 +110,22 @@ class PracticeActivity : AppCompatActivity() {
         newPracticeDeck = userGlossaryList?.keys?.toMutableList()!!
     }
 
-    private fun openResultFragment(clickedButton : Button){
+    private fun openResultFragment(clickedButton: Button) {
+        val bundle = Bundle()
+        val answerResultFragment = AnswerResultFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+
         if (clickedButton == rightAnswerButton) {
             //clickedButton.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
             correctAnswerCount++
-            val transaction = supportFragmentManager.beginTransaction()
-            val rightAnswerFragment = RightAnswerFragment()
-            transaction.add(R.id.rightOrWrongFragmentContainer, rightAnswerFragment)
+            bundle.putBoolean("isRightAnswer", true) // lägg till data i bundlen
+            answerResultFragment.arguments = bundle // skicka bundlen till fragmentet
+            transaction.add(R.id.rightOrWrongFragmentContainer, answerResultFragment)
             transaction.commit()
         } else {
-            val transaction = supportFragmentManager.beginTransaction()
-            val wrongAnswerFragment = WrongAnswerFragment()
-            transaction.add(R.id.rightOrWrongFragmentContainer, wrongAnswerFragment)
+            bundle.putBoolean("isRightAnswer", false) // lägg till data i bundlen
+            answerResultFragment.arguments = bundle // skicka bundlen till fragmentet
+            transaction.add(R.id.rightOrWrongFragmentContainer, answerResultFragment)
             transaction.commit()
         }
     }
@@ -129,7 +138,7 @@ class PracticeActivity : AppCompatActivity() {
         }
     }
 
-    private fun createWrongButtons(wrongAnswerGlossaryList: MutableList<String>){
+    private fun createWrongButtons(wrongAnswerGlossaryList: MutableList<String>) {
         // Shuffle glossary and remove right button alternative
         wrongAnswerGlossaryList.shuffle()
         listOfButtons.remove(rightAnswerButton)
@@ -139,14 +148,14 @@ class PracticeActivity : AppCompatActivity() {
         }
     }
 
-    private fun endPractice(){
-        val newFragment = EndFragment.newInstance(correctAnswerCount)
+    private fun endPractice() {
+        val newFragment = EndPracticeFragment.newInstance(correctAnswerCount)
         supportFragmentManager.beginTransaction()
             .replace(R.id.rightOrWrongFragmentContainer, newFragment)
             .commit()
     }
 
-    private fun updateUserData(){
+    private fun updateUserData() {
         val savedUserData =
             sharedPreferencesManager.getData("user_data", UserData::class.java)!!
         userData.totalRounds = savedUserData.totalRounds + 1
@@ -154,7 +163,7 @@ class PracticeActivity : AppCompatActivity() {
         sharedPreferencesManager.saveData("user_data", userData)
     }
 
-    private fun cardsOpenedText(cardCounter : Int){
+    private fun cardsOpenedText(cardCounter: Int) {
         val textViewCardsLeft = findViewById<TextView>(R.id.cardsLeft)
 
         val sharedPreferencesManager = SharedPreferenceManager(this)
@@ -167,7 +176,8 @@ class PracticeActivity : AppCompatActivity() {
             textViewCardsLeft.text = cardsOpened
         }
     }
-    private fun cardAnim(){
+
+    private fun cardAnim() {
         val initialScale = 1.2f
         val targetScale = 1f
         val initialMove = 200f
@@ -188,12 +198,13 @@ class PracticeActivity : AppCompatActivity() {
         set.start()
     }
 
-    private fun buttonAnim(){
+    private fun buttonAnim() {
         val fadeInDuration = 1000L
         val delay = 1000L
 
         for (button in listOfButtons) {
             button.alpha = 0f
+            button.isClickable = false
 
             val fadeInAnim = ObjectAnimator.ofFloat(button, "alpha", 0f, 1f)
             fadeInAnim.duration = fadeInDuration
@@ -202,7 +213,15 @@ class PracticeActivity : AppCompatActivity() {
             set.play(fadeInAnim)
             set.startDelay = delay
             set.start()
+            makeButtonClickable(set, button)
         }
+    }
+    private fun makeButtonClickable(set: AnimatorSet, button : Button){
+        set.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                button.isClickable = true
+            }
+        })
     }
 
 }
